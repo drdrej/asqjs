@@ -1,10 +1,10 @@
 {
   "name": "asqjs",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "",
-  "main": "index.js",
+  "main": "db-module.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "./node_modules/mocha/bin/mocha test/basic-test.js"
   },
   "keywords": [],
   "author": "drdrej",
