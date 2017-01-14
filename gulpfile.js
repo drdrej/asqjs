@@ -15,7 +15,7 @@ gulp.task( 'default', function() {
         .pipe(git.commit( 'publishers commit', {args: '-a'}) );
 
     gulp.src('./package.json')
-        .pipe(bump({type: minor}))
+        .pipe(bump({type: 'minor'}))
         .pipe(gulp.dest('./'))
         .pipe(git.commit('increment minor version'))
         .pipe(tagVersion());
