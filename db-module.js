@@ -5,18 +5,8 @@
 module.exports = function ( config ) {
 
     this.exec = function( queryFnc, params, userHandleResultFnc) {
-
-        /*
-         var Promise = require("bluebird");
-
-         return new Promise( function(resolve, reject) {
-         console.log( "> exec connect()-promise.");
-
-         var self = this;
-         */
-
-        var handler = require( "./db-exec-module" );
-        handler().exec(queryFnc, params, userHandleResultFnc);
+         var handler = require( "./db-exec-module" );
+         return handler().exec(queryFnc, params, userHandleResultFnc);
     };
 
     return this;
