@@ -9,13 +9,14 @@ gulp.task( 'default', function() {
     var git = require('gulp-git');
 
     // gulp.task('add', function(){
-    return gulp.src('.')
+    gulp.src('.')
             .pipe(git.add({args: '--all'}))
-            .pipe(git.commit( 'initial commit', {args: '-a'}) )
-            .pipe(git.push('origin', 'master',
+            .pipe(git.commit( 'initial commit', {args: '-a'}) );
+
+
+    git.push('origin', 'master',
                     function (err) {
                         if (err) throw err;
-                    }));
-        ;
+                    });
     // });
 });
