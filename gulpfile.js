@@ -11,7 +11,7 @@ gulp.task( 'default', function() {
     // gulp.task('add', function(){
     return gulp.src('.')
             .pipe(git.add({args: '--all'}))
-            .pipe(git.commit('initial commit', {args: '-a'}) )
+            .pipe(git.commit( 'initial commit', {args: '-a'}) )
             .pipe(git.push('origin', 'master',
                     function (err) {
                         if (err) throw err;
