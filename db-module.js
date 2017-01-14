@@ -4,9 +4,9 @@
 
 module.exports = function ( config ) {
 
-    this.exec = function( queryFnc, params, userHandleResultFnc) {
+    this.exec = function( queryFnc, params) {
          var handler = require( "./db-exec-module" );
-         return handler().exec(queryFnc, params, userHandleResultFnc);
+         return handler().exec(queryFnc, params);
     };
 
     return this;

@@ -9,15 +9,15 @@ module.exports = function () {
     var pool = new pg.Pool(config);
     console.log("> pool initialized!");
 
-    this.exec = function ( queryFnc, params, userHandleResultFnc ) {
+    this.exec = function ( queryFnc, params ) {
         var Promise = require("bluebird");
 
         return new Promise( function(resolve, reject) {
             _exec(queryFnc, params,
                 function( result ) {
-                    userHandleResultFnc( result );
                     resolve( result );
-                }, reject);
+                },
+                reject);
         });
     };
 
@@ -27,7 +27,7 @@ module.exports = function () {
         done();
     };
 
-    var _exec = function(queryFnc, params, userHandleResultFnc, reject) {
+    var _exec = function(queryFnc, params, resolve, reject) {
         pool.connect(
             function(err, client, done) {
 
@@ -44,13 +44,12 @@ module.exports = function () {
 
                 if( queryFnc && (_.isFunction(queryFnc) || _.isString(queryFnc)) ) { // && is function?
                     var _exec = require( "./db-query-module" );
-                    var callback = userHandleResultFnc;
 
                     _exec( queryFnc, params, client, function(result, client) {
                         console.log( "> handle result");
 
-                        if( callback && _.isFunction(callback) ) {
-                            callback(result);
+                        if( resolve ) {
+                            resolve(result);
                         }
 
                         _close( client, done );

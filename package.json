@@ -1,6 +1,6 @@
 {
   "name": "asqjs",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "",
   "main": "db-module.js",
   "scripts": {
@@ -16,6 +16,7 @@
     "underscore": "^1.8.3"
   },
   "devDependencies": {
+    "gulp": "^3.9.1",
     "mocha": "^3.2.0"
   }
 }
