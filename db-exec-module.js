@@ -2,7 +2,7 @@
  * Created by asiebert on 11.01.17.
  */
 
-module.exports = function () {
+module.exports = function (config) {
 
     var pg = require('pg');
 
