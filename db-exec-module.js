@@ -23,8 +23,18 @@ module.exports = function (config) {
 
     var _close = function( client, done ) {
         console.log( "> close db connection." );
-        client.end();
-        done();
+
+        var _ = require( "underscore" );
+        if( client &&
+            _.isObject(client) &&
+            client.end &&
+            _.isFunction(client.end) ) {
+
+            client.end();
+        }
+
+        if( done && _.isFunction(done) )
+            done();
     };
 
     var _exec = function(queryFnc, params, resolve, reject) {
